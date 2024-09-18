@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communicator</title>
+  <script>
+    window.addEventListener('message', function(event) {
+      // Erhalte die Nachricht und sende sie an das andere Fenster zurück
+      console.log('Nachricht empfangen im Communicator:', event.data);
+      if (event.data && event.data.type === 'SEND_PGN') {
+        // Sende die empfangene Nachricht an das andere Fenster zurück
+        window.parent.postMessage(event.data, '*');
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Communicator iframe</h1>
+</body>
+</html>
